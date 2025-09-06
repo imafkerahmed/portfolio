@@ -19,4 +19,8 @@ export const site = {
     linkedin: "https://www.linkedin.com/in/your-link/",
     email: "imafkerahmed@gmail.com",
   },
+  education: [
+    "Bachelor of Science in Computer Science",
+    "Master of Science in Software Engineering",
+  ],
 };
