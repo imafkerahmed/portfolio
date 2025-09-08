@@ -5,6 +5,14 @@ import { getUserRepos, Repo } from "@/lib/github";
 import { site } from "@/lib/config";
 
 function RepoItem({ repo }: { repo: Repo }) {
+  // Safer, consistent date label
+  const updatedLabel = new Intl.DateTimeFormat(undefined, {
+    year: "numeric",
+    month: "short",
+    day: "2-digit",
+    timeZone: "UTC",
+  }).format(new Date(repo.updated_at));
+
   return (
     <li className="group flex items-start justify-between gap-4 rounded-md border p-3 hover:bg-muted/40 transition-colors">
       <div>
@@ -12,7 +20,7 @@ function RepoItem({ repo }: { repo: Repo }) {
           href={repo.html_url}
           className="font-medium hover:underline"
           target="_blank"
-          rel="noreferrer"
+          rel="noopener noreferrer"
         >
           {repo.name}
         </Link>
@@ -26,7 +34,7 @@ function RepoItem({ repo }: { repo: Repo }) {
           {typeof repo.stargazers_count === "number" ? (
             <span>★ {repo.stargazers_count}</span>
           ) : null}
-          <span>Updated {new Date(repo.updated_at).toLocaleDateString()}</span>
+          <span>Updated {updatedLabel}</span>
         </div>
       </div>
       <ArrowUpRight className="h-4 w-4 opacity-60 group-hover:opacity-100 transition-opacity" />
@@ -45,7 +53,7 @@ export async function ProjectsWidget() {
           href={`https://github.com/${site.githubUsername}?tab=repositories`}
           className="text-xs text-muted-foreground hover:underline"
           target="_blank"
-          rel="noreferrer"
+          rel="noopener noreferrer"
         >
           View all
         </Link>
