@@ -41,7 +41,6 @@ export function SkillsWidget() {
           plugins={[pluginRef.current]}
           setApi={setApi}
         >
-          {/* Reduced gap to gap-1, and increased logo size */}
           <CarouselContent className="h-full items-center gap-1">
             {skills.map((skill, idx) => (
               <CarouselItem
