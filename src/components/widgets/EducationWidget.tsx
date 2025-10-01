@@ -12,11 +12,14 @@ type EducationItem = {
 };
 
 type Props = {
-  // Card height in px
+  // Card height in px (override if you pass a value)
   height?: number;
 };
 
-export function EducationWidget({ height = 180 }: Props) {
+// Centralize the default so you can tweak it once.
+const DEFAULT_EDU_HEIGHT = 206; // <- adjust this to exactly match your Skills widget
+
+export function EducationWidget({ height = DEFAULT_EDU_HEIGHT }: Props) {
   const items: EducationItem[] = site.education ?? [];
 
   const [revealed, setRevealed] = React.useState(false);
@@ -37,12 +40,12 @@ export function EducationWidget({ height = 180 }: Props) {
       (entries) => {
         setVisibleItems((prev) => {
           const next = prev.slice();
-          for (const entry of entries) {
-            if (entry.isIntersecting) {
-              const i = Number((entry.target as HTMLElement).dataset.index);
-              if (!Number.isNaN(i)) next[i] = true;
+            for (const entry of entries) {
+              if (entry.isIntersecting) {
+                const i = Number((entry.target as HTMLElement).dataset.index);
+                if (!Number.isNaN(i)) next[i] = true;
+              }
             }
-          }
           return next;
         });
       },
@@ -58,7 +61,7 @@ export function EducationWidget({ height = 180 }: Props) {
     <Widget
       title="EDUCATION"
       compact
-      style={{ height }}
+      style={{ height }}         // Height increased via new default
       className="self-start overflow-hidden"
       bodyClassName="min-h-0"
       titleClassName={revealed ? "opacity-100" : "opacity-0"}
@@ -99,9 +102,7 @@ export function EducationWidget({ height = 180 }: Props) {
       >
         <div className={revealed ? "opacity-100" : "opacity-0"}>
           <div className="relative">
-            {/* Align the vertical line with the bullets' center */}
             <div className="absolute left-[7px] top-0 bottom-0 w-px bg-border" />
-            {/* Removed padding from UL; add padding per LI so content clears the bullet + ring */}
             <ul className="space-y-2">
               {items.map((item, idx) => {
                 const isVisible = visibleItems[idx];
@@ -110,7 +111,7 @@ export function EducationWidget({ height = 180 }: Props) {
                     key={`${item.degree}-${item.year}-${idx}`}
                     data-index={idx}
                     className={[
-                      "relative pl-9", // gives content room so the bullet never overlaps
+                      "relative pl-9",
                       "transition-all duration-400 ease-out",
                       isVisible
                         ? "opacity-100 translate-y-0"
@@ -118,7 +119,6 @@ export function EducationWidget({ height = 180 }: Props) {
                     ].join(" ")}
                     style={{ transitionDelay: `${idx * 80}ms` }}
                   >
-                    {/* Bullet positioned so its center is at 7px to match the line */}
                     <span className="absolute left-[2px] top-2.5 h-2.5 w-2.5 rounded-full bg-primary ring-4 ring-background border border-primary" />
                     <div className="flex items-center justify-between">
                       <h4 className="text-xs font-medium leading-tight">
