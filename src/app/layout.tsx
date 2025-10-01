@@ -22,8 +22,7 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body className="min-h-screen bg-background text-foreground antialiased">
         <RootLoaderShell
-          minimumVisibleMs={2500}  
-          sessionStorageKey="__seen_loader" 
+          minimumVisibleMs={2500}
         >
           <ThemeProvider>
             <header className="sticky top-0 z-40 w-full border-b bg-background/80 backdrop-blur">
