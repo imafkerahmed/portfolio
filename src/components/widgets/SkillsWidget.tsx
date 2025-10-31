@@ -11,11 +11,9 @@ const GAP = 40;
 const SPEED = 140;
 
 export function SkillsWidget() {
-  const skills = site.skills ?? [];
-
   const logos: LogoItem[] = React.useMemo(
     () =>
-      skills.map((s) =>
+      (site.skills ?? []).map((s) =>
         s.logo
           ? {
               src: s.logo,
@@ -34,7 +32,7 @@ export function SkillsWidget() {
               title: s.name,
             }
       ),
-    [skills]
+    []
   );
 
   return (

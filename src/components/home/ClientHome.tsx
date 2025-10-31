@@ -12,9 +12,32 @@ const HeroOverlay = dynamic(
 );
 
 // Profile card is an interactive client component with CSS and event handlers
-const ProfileCard: any = dynamic(
-  () => import("@/components/profilecard/ProfileCard").then((m) => m.default),
-  { ssr: false }
+type ProfileCardProps = {
+  avatarUrl: string;
+  iconUrl?: string;
+  grainUrl?: string;
+  behindGradient?: string;
+  innerGradient?: string;
+  showBehindGradient?: boolean;
+  className?: string;
+  enableTilt?: boolean;
+  enableMobileTilt?: boolean;
+  mobileTiltSensitivity?: number;
+  miniAvatarUrl?: string;
+  name?: string;
+  title?: string;
+  handle?: string;
+  status?: string;
+  contactText?: string;
+  showUserInfo?: boolean;
+  onContactClick?: () => void;
+};
+
+const ProfileCard = (
+  dynamic(
+    () => import("@/components/profilecard/ProfileCard").then((m) => m.default),
+    { ssr: false }
+  ) as unknown as React.ComponentType<ProfileCardProps>
 );
 
 interface ClientHomeProps {

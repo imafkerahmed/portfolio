@@ -91,6 +91,7 @@ export const LogoLoop = memo(function LogoLoop({
             {item.node}
           </span>
         ) : (
+          /* eslint-disable-next-line @next/next/no-img-element */
           <img
             src={item.src!}
             alt={item.alt ?? item.title ?? ""}
