@@ -22,7 +22,7 @@ const RootLoaderShell: React.FC<RootLoaderShellProps> = ({
     // Loader starts visible on first paint; hides after timeout
   return (
     <>
-      <Loader hidden={hidden} />
+      {!hidden && <Loader hidden={hidden} />}
       {children}
     </>
   );
