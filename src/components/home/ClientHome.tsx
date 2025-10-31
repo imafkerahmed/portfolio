@@ -3,10 +3,17 @@
 import React from "react";
 import dynamic from "next/dynamic";
 import { useHeroOverlay } from "@/hooks/useHeroOverlay";
+import { site } from "@/lib/config";
 
 // Load hero overlay only on client to avoid any SSR hydration edge cases
 const HeroOverlay = dynamic(
   () => import("@/components/hero/HeroOverlay").then((m) => m.HeroOverlay),
+  { ssr: false }
+);
+
+// Profile card is an interactive client component with CSS and event handlers
+const ProfileCard: any = dynamic(
+  () => import("@/components/profilecard/ProfileCard").then((m) => m.default),
   { ssr: false }
 );
 
@@ -29,7 +36,30 @@ export function ClientHome({ children }: ClientHomeProps) {
 
   return (
     <>
-      <HeroOverlay open={open} onDismiss={dismiss} />
+      <HeroOverlay
+        open={open}
+        onDismiss={dismiss}
+        rightSide={
+          <div className="w-full max-w-sm md:max-w-md lg:max-w-lg h-[60vh] md:h-[70vh] lg:h-[75vh] flex items-start justify-center">
+            <ProfileCard
+              name={site.name}
+              title={site.role}
+              avatarUrl={site.avatarUrl}
+              miniAvatarUrl={site.avatarUrl}
+              handle={site.githubUsername}
+              contactText="Contact Me"
+              enableMobileTilt={false}
+              behindGradient={undefined}
+              innerGradient={undefined}
+              onContactClick={() => {
+                if (typeof window !== "undefined") {
+                  window.location.href = "mailto:imafkerahmed@gmail.com";
+                }
+              }}
+            />
+          </div>
+        }
+      />
 
       <div
         className={[

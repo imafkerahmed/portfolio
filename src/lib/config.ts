@@ -1,9 +1,9 @@
 export const site = {
-  name: "Ahmed Imafker",
-  role: "Full-stack Developer",
+  name: "Afkre Ahmed",
+  role: "Front-End Web Developer",
   location: "Your City, Country",
   githubUsername: "imafkerahmed",
-  avatarUrl: "https://avatars.githubusercontent.com/u/00000000?v=4", // Replace with your actual avatar id
+  avatarUrl: "https://avatars.githubusercontent.com/u/177913752?v=4", 
   about:
     "I build web apps with Next.js and enjoy learning by shipping small projects.",
   education: [
