@@ -2,31 +2,21 @@
 
 import { useEffect, useState } from "react";
 
-const SESSION_KEY = "heroDismissed";
-
+// Always show hero overlay on full page refresh: do not persist dismissal between reloads
 export function useHeroOverlay(initiallyOpen = true) {
   const [open, setOpen] = useState(initiallyOpen);
 
+  // No persisted state: on each mount (including hard refresh), start from the initial state
   useEffect(() => {
-    try {
-      const dismissed = sessionStorage.getItem(SESSION_KEY);
-      if (dismissed === "1") setOpen(false);
-    } catch {
-      // sessionStorage might be blocked; ignore and default to open.
-    }
+    setOpen(initiallyOpen);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const dismiss = () => {
-    try {
-      sessionStorage.setItem(SESSION_KEY, "1");
-    } catch {}
     setOpen(false);
   };
 
   const reset = () => {
-    try {
-      sessionStorage.removeItem(SESSION_KEY);
-    } catch {}
     setOpen(true);
   };
 

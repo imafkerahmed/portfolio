@@ -1,0 +1,32 @@
+.shuffle-parent {
+  display: inline-block;
+  white-space: nowrap; /* keep the title on a single line */
+  word-wrap: normal;
+  overflow-wrap: normal;
+  will-change: transform;
+  /* Do not set font-size/line-height/font-family/text-transform here.
+     Let the element's className (e.g., Tailwind) control typography. */
+  visibility: hidden;
+}
+
+.shuffle-parent.is-ready {
+  visibility: visible;
+}
+
+.shuffle-char-wrapper {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: baseline;
+  position: relative;
+}
+
+.shuffle-char-wrapper > span {
+  display: inline-flex;
+  will-change: transform;
+}
+
+.shuffle-char {
+  line-height: 1;
+  display: inline-block;
+  text-align: center;
+}
