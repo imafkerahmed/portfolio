@@ -6,7 +6,7 @@ import { site } from "@/lib/config";
 import LogoLoop, { LogoItem } from "@/components/ui/LogoLoop";
 
 const CARD_HEIGHT = 206;
-const LOGO_HEIGHT = 60; 
+const LOGO_HEIGHT = 60;
 const GAP = 40;
 const SPEED = 140;
 
@@ -19,8 +19,8 @@ export function SkillsWidget() {
               src: s.logo,
               alt: s.name,
               title: s.name,
-              width: 110,          // optional: slight width hint
-              height: LOGO_HEIGHT, // not strictly required; logoLoop enforces height via CSS var
+              width: 110,
+              height: LOGO_HEIGHT,
             }
           : {
               node: (
@@ -47,7 +47,7 @@ export function SkillsWidget() {
         logos={logos}
         speed={SPEED}
         gap={GAP}
-        logoHeight={LOGO_HEIGHT}   // <— Bigger size here
+        logoHeight={LOGO_HEIGHT}
         direction="left"
         pauseOnHover
         fadeOut={false}

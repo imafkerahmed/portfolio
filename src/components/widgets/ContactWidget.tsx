@@ -6,7 +6,7 @@ import { site } from "@/lib/config";
 
 export function ContactWidget() {
   return (
-    <Widget title="Contact">
+    <Widget title="Contact" style={{ minHeight: "205.75px" }}>
       <div className="flex flex-wrap gap-2">
         {site.links.github && (
           <Button asChild size="sm" variant="outline">

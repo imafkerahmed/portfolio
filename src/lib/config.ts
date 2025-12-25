@@ -1,5 +1,5 @@
 export const site = {
-  name: "Afkre Ahmed",
+  name: "Afker Ahmed",
   role: "Front-End Web Developer",
   location: "Your City, Country",
   githubUsername: "imafkerahmed",
