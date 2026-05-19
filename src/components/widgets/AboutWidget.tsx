@@ -1,6 +1,5 @@
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import TextType from "@/components/ui/typetext/TextType.jsx";
-import { Separator } from "@/components/ui/separator";
 import { Widget } from "@/components/widget";
 import { site } from "@/lib/config";
 

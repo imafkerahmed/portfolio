@@ -32,8 +32,8 @@ export default async function HomePage() {
           <EducationWidget />
         </div>
 
-        {/* Row 3 (Projects left wide) */}
-        <div className="md:col-span-2 lg:col-span-2">
+        {/* Row 3 (Projects full width) */}
+        <div className="md:col-span-2 lg:col-span-3">
           <ProjectsWidget />
         </div>
       </div>
